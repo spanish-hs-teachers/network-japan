@@ -1,0 +1,14 @@
+spanish_teachers.code-workspace
+.bundle/
+.github/prompts/
+.github/skills/
+.github/docs/
+README.md
+_site/
+bundle-install.log
+bundle-install-final.log
+bundle-install-ridk.log
+internal/
+docs/
+templates/
+vendor/bundle/

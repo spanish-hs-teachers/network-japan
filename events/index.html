@@ -1,0 +1,20 @@
+---
+layout: page
+title: イベント
+permalink: /events/
+---
+
+{% assign sorted_events = site.events | sort: 'publishDate' %}
+{% assign sorted_events = sorted_events | reverse %}
+
+<ul class="list-clean article-list">
+  {% for event in sorted_events %}
+    <li class="card article-card">
+      <p class="meta">{{ event.publishDate | default: event.date | date: '%Y年%-m月%-d日' }}</p>
+      <h3><a href="{{ event.url | relative_url }}">{{ event.title }}</a></h3>
+    </li>
+  {% endfor %}
+  {% if sorted_events.size == 0 %}
+    <li class="notice-box">現在掲載中の開催予定イベントはありません。</li>
+  {% endif %}
+</ul>

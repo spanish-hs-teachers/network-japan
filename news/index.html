@@ -1,0 +1,19 @@
+---
+layout: page
+title: お知らせ
+permalink: /news/
+---
+
+<ul class="list-clean article-list">
+  {% for post in site.posts %}
+    <li class="card article-card">
+      <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y年%-m月%-d日' }}</time></p>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    </li>
+  {% endfor %}
+</ul>
+{% if site.posts.size == 0 %}
+<div class="notice-box">
+  <p>現在、掲載中のお知らせはありません。</p>
+</div>
+{% endif %}

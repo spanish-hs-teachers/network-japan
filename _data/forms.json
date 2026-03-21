@@ -1,0 +1,12 @@
+[
+  {
+    "id": "join",
+    "label": "入会申込フォーム",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLScXQJN1lb5kuSPc_dCFdoFwqFB_KxDPMprmcuodcCPIhX5SqQ/viewform?usp=header"
+  },
+  {
+    "id": "contact",
+    "label": "お問い合わせフォーム",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLScVxMPHG7YnOEU-w23-a-urdyX0OS2EuHjF1O2WGI-hIcZHVg/viewform?usp=header"
+  }
+]

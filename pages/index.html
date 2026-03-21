@@ -1,0 +1,77 @@
+---
+layout: default
+title: ホーム
+description: 高等学校スペイン語教育ネットワークの公式サイトです。お知らせ、イベント、入会案内を掲載します。
+permalink: /
+theme_color: "#4790bb"
+---
+<section class="section home-hero-section">
+  <div class="container home-intro">
+    <h1><span class="hero-title-primary">高等学校スペイン語教育</span><span class="hero-title-break">ネットワーク</span></h1>
+    <p class="home-tagline">日本の高等学校のスペイン語教育に携わる人が繋がり、中等教育機関におけるスペイン語教育の充実と発展を図ることを目指しています</p>
+    <a class="button" href="{{ '/about/' | relative_url }}">団体紹介</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="home-panels">
+      <section class="home-panel">
+        <h2>お知らせ</h2>
+        {% if site.posts.size > 0 %}
+        <ul class="news-list">
+          {% for post in site.posts limit:5 %}
+          <li>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-message">現在、掲載中のお知らせはありません。</p>
+        {% endif %}
+        <p class="home-panel-link"><a href="{{ '/news/' | relative_url }}">お知らせ一覧 →</a></p>
+      </section>
+
+      <section class="home-panel">
+        <h2>イベント</h2>
+        {% assign sorted_events = site.events | sort: 'publishDate' %}
+        {% if sorted_events.size > 0 %}
+        <ul class="news-list">
+          {% assign event_count = 0 %}
+          {% for event in sorted_events %}
+            {% if event_count < 5 %}
+              {% assign event_count = event_count | plus: 1 %}
+          <li>
+            <time datetime="{{ event.publishDate | default: event.date | date_to_xmlschema }}">{{ event.publishDate | default: event.date | date: '%Y.%m.%d' }}</time>
+            <a href="{{ event.url | relative_url }}">{{ event.title }}</a>
+          </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-message">現在、掲載中のイベントはありません。</p>
+        {% endif %}
+        <p class="home-panel-link"><a href="{{ '/events/' | relative_url }}">イベント一覧 →</a></p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="section section-warm">
+  <div class="container">
+    <div class="home-panels">
+      <section class="home-panel">
+        <h2>入会案内</h2>
+        <p>高等学校スペイン語教育ネットワークへの入会を検討される方はこちら</p>
+        <p class="home-panel-link"><a href="{{ '/join/' | relative_url }}">入会案内を見る →</a></p>
+      </section>
+
+      <section class="home-panel">
+        <h2>お問い合わせ</h2>
+        <p>本団体へのお問い合わせはこちら</p>
+        <p class="home-panel-link"><a href="{{ '/contact/' | relative_url }}">お問い合わせページを見る →</a></p>
+      </section>
+    </div>
+  </div>
+</section>

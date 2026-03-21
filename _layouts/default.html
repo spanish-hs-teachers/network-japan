@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ja' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta name="theme-color" content="{{ page.theme_color | default: '#4790bb' }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% if page.custom_css_vars %}
+    <style>
+      {{ page.custom_css_vars }}
+    </style>
+    {% endif %}
+  </head>
+  <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand-block">
+          <p class="site-name"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+        </div>
+        <nav class="site-nav" aria-label="主要メニュー">
+          <ul>
+            {% assign nav_items = "/::ホーム,/about/::団体紹介,/news/::お知らせ,/events/::イベント,/join/::入会案内,/contact/::お問い合わせ" | split: ',' %}
+            {% for item in nav_items %}
+              {% assign parts = item | split: '::' %}
+              {% assign nav_path = parts[0] | relative_url %}
+              <li><a href="{{ nav_path }}"{% if page.url == parts[0] %} aria-current="page"{% endif %}>{{ parts[1] }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="footer-title">{{ site.title }}</p>
+        </div>
+        <div>
+          <p class="footer-title">サイト案内</p>
+          <ul>
+            <li><a href="{{ '/about/' | relative_url }}">団体紹介</a></li>
+            <li><a href="{{ '/news/' | relative_url }}">お知らせ</a></li>
+            <li><a href="{{ '/events/' | relative_url }}">イベント</a></li>
+            <li><a href="{{ '/join/' | relative_url }}">入会案内</a></li>
+            <li><a href="{{ '/contact/' | relative_url }}">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

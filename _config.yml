@@ -1,0 +1,33 @@
+title: 高等学校スペイン語教育ネットワーク
+description: 高等学校スペイン語教育ネットワークの公式サイトです。お知らせ、イベント、入会案内を掲載します。
+lang: ja
+timezone: Asia/Tokyo
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+  - docs/
+  - internal/
+  - templates/
+  - spanish_teachers.code-workspace
+  - Gemfile
+  - Gemfile.lock
+collections:
+  events:
+    output: true
+    permalink: /events/:year/:month/:day/:slug/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: events
+    values:
+      layout: page
